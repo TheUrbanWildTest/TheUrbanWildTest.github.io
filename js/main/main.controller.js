@@ -46,14 +46,14 @@
         map.removeLayer(marker);
       }
       var removeAllMarkers = function(){
-        mapMarkers.forEach(function(e,index){
-          removeMarker(mymap, mapMarkers[index]);
-        });
+        mymap.removeLayer(clusterMarkers);
+        clusterMarkers = L.markerClusterGroup(); //re-new clusters 
       }
 
       vm.busy = false;
       var mymap = createMap()
-      var mapMarkers = [];
+      var clusterMarkers = L.markerClusterGroup();
+      
       vm.postcode = "M1 5GD";
 
       vm.refreshMap = function(postcode) {
@@ -65,8 +65,12 @@
         locationsSrvc.getMarkers(postcode)
           .then(function(markersList){
             markersList.forEach(function(e,index){
-              mapMarkers[index] = L.marker([e.location.lat, e.location.long]).addTo(mymap);
+
+              var marker = L.marker(new L.LatLng(e.location.lat, e.location.long));
+              clusterMarkers.addLayer(marker);
+
             });
+            mymap.addLayer(clusterMarkers)
             vm.busy = false;
           });
 
