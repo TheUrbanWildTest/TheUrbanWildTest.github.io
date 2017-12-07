@@ -1,0 +1,27 @@
+<ion-view>
+
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Map pin plot example</h1>
+    </ion-header-bar>
+    
+    <ion-content class="has-header has-footer" scroll="false">
+      <div id="mymap" style="margin: 10px; border: 10px solid orange; height:85vw;">
+      </div>
+      
+      <div style="position: relative; height: 47px; background: rgb(230,230,230);">
+        <button style="margin-left: 10px; float:left;" class="button button-positive" ng-disabled="vm.busy" ng-click="vm.refreshMap(vm.postcode)">
+          Search {{vm.postcode}}
+        </button>
+        
+        <button style="margin-left: 10px; float:left;" class="button button-assertive" ng-disabled="vm.busy" ng-click="vm.clearMap()">
+          Clear Map
+        </button>
+        
+        <ion-spinner ng-show="vm.busy" class="spinner-calm" style="position: absolute; transform: translate(-50%, -50%); top:50%; left: 50%;"></ion-spinner>
+      </div>
+    </ion-content>
+
+    <ion-footer-bar class="bar-stable row">
+    </ion-footer-bar>
+
+</ion-view>
