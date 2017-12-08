@@ -9,7 +9,8 @@
       '$ionicPlatform',
       '$scope',
       '$timeout',
-      'locationsSrvc'
+      'locationsSrvc',
+      '$state'
       ];
 
 
@@ -17,7 +18,8 @@
       $ionicPlatform,
       $scope,
       $timeout,
-      locationsSrvc
+      locationsSrvc,
+      $state
   ) {
       var vm = angular.extend(this, {
 
@@ -31,7 +33,8 @@
 
       //Controller below
       var createMap = function() {
-        var mymap = L.map('mymap').setView([53.471528, -2.241224], 16);
+        var latlng = L.latLng(53.471528, -2.241224);
+        var mymap = L.map('mymap', {center: latlng, zoom: 16});
         
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -53,7 +56,7 @@
       vm.busy = false;
       var mymap = createMap()
       var clusterMarkers = L.markerClusterGroup();
-      
+
       vm.postcode = "M1 5GD";
 
       vm.refreshMap = function(postcode) {
@@ -77,6 +80,9 @@
       }
       vm.clearMap = function(){
         removeAllMarkers();
+      }
+      vm.goSearch = function() {
+        $state.go("search");
       }
 
       

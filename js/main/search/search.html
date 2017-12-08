@@ -1,0 +1,28 @@
+<ion-view>
+    
+        <ion-header-bar class="bar-stable">
+          <h1 class="title">Map pin plot example</h1>
+          <button class="button button-positive" ng-click="vm.goMap()">Map</button>
+        </ion-header-bar>
+        
+        <ion-content class="has-header has-footer" scroll="false">
+          <ng-datalist items=myItems
+          current=myElement req="false" on-change="vm.hello"></ng-datalist>
+          
+          <input type="date" ng-model="vm.beginDate"> 
+          {{vm.beginDate}}
+          <br>
+          <br>
+          
+          <input type="date" ng-model="vm.endDate"> 
+          {{vm.endDate}}
+          <br>
+          <br>
+
+        </ion-content>
+    
+        <ion-footer-bar class="bar-stable row">
+        </ion-footer-bar>
+    
+    </ion-view>
+    

@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', [
   'ionic',
+  'ng-datalist',
   'app.main',
   'app.locations'
 ])
@@ -25,6 +26,6 @@ angular.module('starter', [
       StatusBar.styleDefault();
     }
 
-    $state.go("main")
+    $state.go("search")
   });
 })

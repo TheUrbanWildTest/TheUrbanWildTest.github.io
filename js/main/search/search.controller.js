@@ -1,0 +1,55 @@
+(function () {
+  'use strict';
+
+  angular
+      .module('app.main')
+      .controller('searchCtrl', searchCtrl);
+
+  searchCtrl.$inject = [
+      '$ionicPlatform',
+      '$scope',
+      '$timeout',
+      'locationsSrvc',
+      '$state'
+      ];
+
+
+  function searchCtrl(
+      $ionicPlatform,
+      $scope,
+      $timeout,
+      locationsSrvc,
+      $state
+  ) {
+      var vm = angular.extend(this, {
+
+      });
+
+      vm.hardwareBackButton = $ionicPlatform.registerBackButtonAction(function() {
+          //called when hardware back button pressed
+          //vm.cancel();
+      }, 100);
+      $scope.$on('$destroy', vm.hardwareBackButton);
+
+      //Controller below
+      
+      //$scope.myItems = ['Banana', 'Bicycle', 'Random stuff', 'Book', 'Music', 'GIT'];
+      $scope.myItems = [];
+      
+      // Storing current element:
+      $scope.currentItem = '';
+      
+      vm.myAwesomeList = [""];
+      vm.myElement = "";
+
+      vm.hello = function(searchTerm){
+        // pretend to grab some suggestions using the search term
+        $timeout(function(){$scope.myItems = ['Banana', 'Bicycle', 'Random stuff', 'Book', 'Music', 'GIT', 'stuart']},1500);
+      }
+
+      vm.goMap = function() {
+        $state.go('main')
+      }
+      
+    }
+})();
