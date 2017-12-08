@@ -50,6 +50,15 @@
       vm.goMap = function() {
         $state.go('main')
       }
+      vm.getLocation = function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } 
+      }
+      function showPosition(position) {
+        window.alert("Latitude: " + position.coords.latitude + 
+        " Longitude: " + position.coords.longitude); 
+    }
       
     }
 })();
